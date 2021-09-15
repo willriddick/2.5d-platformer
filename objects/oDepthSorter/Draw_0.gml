@@ -7,11 +7,8 @@ ds_grid_resize(_dgrid,2,_inst_num);
 for (var i = 0; i < _inst_num; i++)
 {
 	var _inst = instance_find(oParentDepth,i);
-	with (_inst)
-	{
-		_dgrid[# 0, i] = id;
-		_dgrid[# 1, i] = y + z;
-	}
+	_dgrid[# 0, i] = _inst.id;
+	_dgrid[# 1, i] = _inst.draw_depth;
 }
 
 //Sort ds_grid by y value

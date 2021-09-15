@@ -16,6 +16,7 @@ jump_speed = 5;
 grv = 0.3;
 grv_max = 10;
 
+draw_depth = 0;
 z = 0;
 z_floor = 0;
 on_ground = true;

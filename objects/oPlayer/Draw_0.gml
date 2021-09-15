@@ -6,14 +6,20 @@ draw_set_color(c_white);
 draw_set_alpha(1);
 
 
+//SET DRAW DEPTH
+draw_depth = y + z;
+
 //DRAW OURSELVES
 draw_sprite_ext(sprite_index, image_index, x, y - z, 
 	image_xscale, image_yscale, image_angle, image_blend, image_alpha);
 
 
 //DRAW DEBUG
+draw_set_halign(fa_left);
+draw_set_valign(fa_top);
 draw_set_font(global.bitmap_font);
 var _debug = "";
+_debug += "draw_depth: " + string(draw_depth) + "\n";
 _debug += "z: " + string(z) + "\n";
 _debug += "zsp: " + string(zsp) + "\n"; 
 _debug += "z_floor: " + string(z_floor) + "\n";

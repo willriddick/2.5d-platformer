@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "sBox1",
-    "path": "sprites/sBox1/sBox1.yy",
+    "name": "sBox8_1",
+    "path": "sprites/sBox8_1/sBox8_1.yy",
   },
   "solid": false,
   "visible": true,
@@ -26,7 +26,6 @@
   "eventList": [
     {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
     {"isDnD":false,"eventNum":0,"eventType":8,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
