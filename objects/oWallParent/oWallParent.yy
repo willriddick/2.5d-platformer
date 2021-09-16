@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "sBox2",
-    "path": "sprites/sBox2/sBox2.yy",
+    "name": "sBox16",
+    "path": "sprites/sBox16/sBox16.yy",
   },
   "solid": false,
   "visible": true,

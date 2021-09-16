@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "sBox2",
-    "path": "sprites/sBox2/sBox2.yy",
+    "name": "sBox16_2",
+    "path": "sprites/sBox16_2/sBox16_2.yy",
   },
   "solid": false,
   "visible": true,
@@ -34,7 +34,7 @@
     "path": "folders/Objects.yy",
   },
   "resourceVersion": "1.0",
-  "name": "oBox2",
+  "name": "oBox16",
   "tags": [],
   "resourceType": "GMObject",
 }

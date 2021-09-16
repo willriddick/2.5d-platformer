@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "sBox8_1",
-    "path": "sprites/sBox8_1/sBox8_1.yy",
+    "name": "sBox8_2",
+    "path": "sprites/sBox8_2/sBox8_2.yy",
   },
   "solid": false,
   "visible": true,
@@ -34,7 +34,7 @@
     "path": "folders/Objects.yy",
   },
   "resourceVersion": "1.0",
-  "name": "oBox1",
+  "name": "oBox8",
   "tags": [],
   "resourceType": "GMObject",
 }
