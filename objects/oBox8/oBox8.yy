@@ -1,12 +1,15 @@
 {
-  "spriteId": null,
+  "spriteId": {
+    "name": "sBox8",
+    "path": "sprites/sBox8/sBox8.yy",
+  },
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
-    "name": "oParentDepth",
-    "path": "objects/oParentDepth/oParentDepth.yy",
+    "name": "oWallParent",
+    "path": "objects/oWallParent/oWallParent.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,
@@ -31,7 +34,7 @@
     "path": "folders/Objects.yy",
   },
   "resourceVersion": "1.0",
-  "name": "oWallParent",
+  "name": "oBox8",
   "tags": [],
   "resourceType": "GMObject",
 }

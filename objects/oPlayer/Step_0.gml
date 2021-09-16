@@ -17,7 +17,23 @@ else
 
 
 //CROUCHING
-if (oInput.punch_hold)
+if (oInput.punch_hold) crouch = true;
+else 
+{
+	z_height = 12;	
+	
+	if (!place_meeting_3d(x, y, z, z_height, oWallParent)) 
+	{
+		crouch = false;
+	}
+	else
+	{
+		z_height = 6;	
+		crouch = true;
+	}
+}
+
+if (crouch)
 {
 	sprite_index = sPlayerCrouch;
 	z_height = 6;	
@@ -62,27 +78,4 @@ if (z + zsp < z_floor)
 
 
 //COLLISIONS
-if (place_meeting_3d(x + xsp, y, z, z_height, oWallParent))
-{
-	while (!place_meeting_3d(x + sign(xsp), y, z, z_height,  oWallParent)) x += sign(xsp);
-	xsp = 0;
-}	
-
-if (place_meeting_3d(x, y + ysp, z, z_height,  oWallParent))
-{
-	while (!place_meeting_3d(x, y + sign(ysp), z, z_height,  oWallParent)) y += sign(ysp);
-	ysp = 0;
-}	
-
-//Z COLLISION
-if (place_meeting_3d(x, y, z + zsp, z_height,  oWallParent))
-{
-	while (!place_meeting_3d(x, y, z + sign(zsp), z_height,  oWallParent)) z += sign(zsp);
-	zsp = 0;
-}	
-
-	
-//CHANGE COORDINATE VALUES
-x += xsp;
-y += ysp;
-z += zsp;
+collision();
