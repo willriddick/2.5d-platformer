@@ -9,6 +9,7 @@ v_move = 0;
 
 h_move_speed = 2;
 v_move_speed = 1.5;
+move_speed_multiplier = 1;
 move_dir	 = 0;
 jumps_max	 = 2;
 jumps		 = jumps_max;
@@ -29,3 +30,6 @@ col_grid_xy   = ds_grid_create(2,1);
 col_amount_xy = 0;
 col_grid_z    = ds_grid_create(2,1);
 col_amount_z  = 0;
+
+int_particle_walk = 0;
+int_particle_land = 0;
