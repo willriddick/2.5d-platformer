@@ -1,5 +1,7 @@
 event_inherited();
 
+instance_create_layer(x,y,"Player",oShadowPlayer);
+
 xsp = 0;
 ysp = 0;
 zsp = 0;
@@ -11,7 +13,7 @@ h_move_speed = 2;
 v_move_speed = 1.5;
 move_speed_multiplier = 1;
 move_dir	 = 0;
-jumps_max	 = 2;
+jumps_max	 = 1;
 jumps		 = jumps_max;
 jump_speed	 = 4;
 grv			 = 0.2;

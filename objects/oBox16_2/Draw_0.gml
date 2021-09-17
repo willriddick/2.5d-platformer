@@ -1,8 +1,5 @@
 event_inherited();
 
-//SET DRAW DEPTH
-draw_depth = y + z + z_height/2;
-
 draw_set_halign(fa_center);
 draw_set_valign(fa_center);
 draw_set_font(global.bitmap_font);
