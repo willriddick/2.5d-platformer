@@ -1,4 +1,3 @@
-
 //THIS FUNCTION DEALS WITH COLLISION ON THE X AND Y AXES
 //		(collision with the sides of the player and sides of objects)
 function place_meeting_2d(_x, _y, _z, _height, _obj){
