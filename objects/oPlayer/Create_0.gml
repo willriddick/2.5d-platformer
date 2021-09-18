@@ -1,37 +1,51 @@
 event_inherited();
 
-instance_create_layer(x,y,"Player",oShadowPlayer);
+//SHADOW AND DEPTH
+my_shadow = instance_create_layer(x,y,"Player",oShadow);
+draw_depth = 0;
 
+
+//COORDINATE SPEEDS
 xsp = 0;
 ysp = 0;
 zsp = 0;
 
+
+//X/Y MOVEMENT
 h_move = 0;
 v_move = 0;
-
 h_move_speed = 2;
 v_move_speed = 1.5;
-move_speed_multiplier = 1;
 move_dir	 = 0;
-jumps_max	 = 1;
-jumps		 = jumps_max;
-jump_speed	 = 4;
-grv			 = 0.2;
-grv_max		 = 7;
+move_speed_multiplier = 1;
 
+
+//JUMPING
+jumps_max		= 1;
+jumps			= jumps_max;
+jump_speed		= 4;
+on_ground_timer = 0;
+coyote_time		= 8;
 crouch = false;
 
-draw_depth = 0;
+
+//Z AXIS AND GRAVITY
+grv		= 0.2;
+grv_max	= 7;
 z		   = 0;
 z_floor    = 0;
 on_ground  = false;
 z_height   = 12;
 
+
+//COLLISION
 xy_meeting = -4;
 col_grid_xy   = ds_grid_create(2,1);
 col_amount_xy = 0;
 col_grid_z    = ds_grid_create(2,1);
 col_amount_z  = 0;
 
+
+//PARTICLES
 int_particle_walk = 0;
 int_particle_land = 0;

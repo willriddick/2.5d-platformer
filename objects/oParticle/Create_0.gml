@@ -1,5 +1,6 @@
 event_inherited();
 
+destroy = false;
 draw_depth = 0;
 
 sprite_index = sParticleWalk;

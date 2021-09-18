@@ -1,12 +1,15 @@
 {
-  "spriteId": null,
+  "spriteId": {
+    "name": "sWallDiagonal",
+    "path": "sprites/sWallDiagonal/sWallDiagonal.yy",
+  },
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
-    "name": "oParentDepth",
-    "path": "objects/oParentDepth/oParentDepth.yy",
+    "name": "oWallParent",
+    "path": "objects/oWallParent/oWallParent.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,
@@ -22,6 +25,7 @@
   "physicsShapePoints": [],
   "eventList": [
     {"isDnD":false,"eventNum":0,"eventType":8,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
@@ -30,7 +34,7 @@
     "path": "folders/Objects.yy",
   },
   "resourceVersion": "1.0",
-  "name": "oShadowPlayer",
+  "name": "oWallDiagonal",
   "tags": [],
   "resourceType": "GMObject",
 }

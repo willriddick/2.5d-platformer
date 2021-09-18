@@ -1,5 +1,3 @@
-
-
 //SET DRAW DEPTH
 draw_depth = y + z + z_height/2;
 

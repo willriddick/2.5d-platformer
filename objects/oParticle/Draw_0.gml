@@ -16,4 +16,5 @@ draw_sprite_ext(sprite_index, image_index, x, y - z,
 	
 	
 //KILL PARTICLE
-if (image_index > image_number - 1) instance_destroy();
+if (image_index > image_number - 1) destroy = true;
+if (destroy) instance_destroy();
