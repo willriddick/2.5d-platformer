@@ -64,9 +64,9 @@ if (xy_meeting)
 {
 	if ((z - xy_meeting.z_top) <= 0.2) &&  (z+1 > xy_meeting.z_top)
 	{
-		on_ground_id = xy_meeting; 	
-	} else on_ground_id = noone;
-} else on_ground_id = noone;
+		on_ground_meeting = xy_meeting; 	
+	} else on_ground_meeting = noone;
+} else on_ground_meeting = noone;
 
 
 // set z_floor
@@ -80,9 +80,9 @@ if (!on_ground)
 }
 else if (on_ground)
 {
-	if (on_ground_id)
+	if (on_ground_meeting)
 	{
-		z_floor = on_ground_id.z_top;	
+		z_floor = on_ground_meeting.z_top;	
 	} else z_floor = 0
 }
 

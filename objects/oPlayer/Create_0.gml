@@ -43,11 +43,10 @@ z_height   = 12;
 
 
 //COLLISION
-on_ground_id = -4;
-z_meeting = false;
+on_ground_meeting = -4;
 xy_meeting = -4;
-//col_grid_xy   = ds_grid_create(2,1);
-//col_amount_xy = 0;
+z_meeting = false;
+
 collision_grid    = ds_grid_create(2,1);
 collision_amount  = 0;
 
