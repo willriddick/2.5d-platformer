@@ -1,4 +1,4 @@
-//MOVEMENT
+        //MOVEMENT
 h_move = oInput.right - oInput.left;
 v_move = oInput.down - oInput.up;
 move_dir = point_direction(0,0,h_move,v_move);
@@ -17,11 +17,8 @@ else
 
 
 //CROUCHING
-if (oInput.punch_hold) 
-{
-	crouch = true;
-}
-else if (!oInput.punch_hold)
+if (oInput.punch_hold) crouch = true;
+if (crouch) && (!oInput.punch_hold)
 {
 	z_height = 12;	
 	
@@ -37,49 +34,62 @@ else if (!oInput.punch_hold)
 	}
 }
 
-	// sets sprite, height and speed for crouching
-	if (crouch)
-	{
-		sprite_index = sPlayerCrouch;
-		z_height = 6;	
-		move_speed_multiplier = 0.5;
-	}
-	else 
-	{
-		sprite_index = sPlayer;
-		z_height = 12;		
-		move_speed_multiplier = 1;
-	}
+// sets sprite, height and speed for crouching
+if (crouch)
+{
+	sprite_index = sPlayerCrouch;
+	z_height = 6;	
+	move_speed_multiplier = 0.5;
+}
+else 
+{
+	sprite_index = sPlayer;
+	z_height = 12;		
+	move_speed_multiplier = 1;
+}
 	
 	
 //ON GROUND
-if ((z - z_floor) <= 0.1) on_ground = true;
+if ((z - z_floor) <= 0.2) on_ground = true;
 else on_ground = false;
-if (on_ground) z = z_floor;
-if (on_ground) on_ground_timer = 5;
-else on_ground_timer--;
-if (on_ground_timer < 0) on_ground_timer = 0;
 
-// create walk particle
-if (on_ground && ((xsp != 0) or (ysp !=0)))
+if (on_ground) 
 {
-	int_particle_walk++;
-	if (int_particle_walk >= coyote_time)
+	z = z_floor;
+	on_ground_timer = coyote_time;
+}
+
+// get on_ground_id
+if (xy_meeting)
+{
+	if ((z - xy_meeting.z_top) <= 0.2) &&  (z+1 > xy_meeting.z_top)
 	{
-		create_particle(sParticleWalk,-1,1.5,2,"Player",x,y,z,0,0,0,0,0.1,0.5);
-		int_particle_walk = 0;
-	}
-}
+		on_ground_id = xy_meeting; 	
+	} else on_ground_id = noone;
+} else on_ground_id = noone;
 
-// create land particle
-if (on_ground && int_particle_land == 0)
+
+// set z_floor
+if (!on_ground) 
 {
-	repeat(10) create_particle(sParticleWalk,2,1.5,2.5,"Player",x,y,z,-1.5,1.5,-1.5,1.5,0,0);	
-	int_particle_land = 1;
+	if (xy_meeting)
+	{
+		if (z > xy_meeting.z_top) z_floor = xy_meeting.z_top;	
+		else z_floor = 0;
+	} else z_floor = 0;
 }
-if (!on_ground) int_particle_land = 0;
+else if (on_ground)
+{
+	if (on_ground_id)
+	{
+		z_floor = on_ground_id.z_top;	
+	} else z_floor = 0
+}
 
-	
+// coyote timer
+if (on_ground_timer > 0) on_ground_timer--;
+else on_ground_timer = 0;
+
 
 //JUMPING
 if (on_ground)  jumps = jumps_max;
@@ -93,13 +103,13 @@ if (zsp > 0) && (!oInput.jump_hold) zsp *= 0.75;
 
 //GRAVITY
 if (!on_ground)
-{
+{		
 	// cap the gravity to grv max
 	if (zsp > -grv_max)  zsp -= grv;	
 	else zsp = grv_max;
 }
 
-//Z FLOOR
+// snap to ground
 if (z + zsp < z_floor) 
 {
 	z = z_floor;
@@ -128,3 +138,23 @@ with (my_shadow)
 	//z = z_floor;
 }
 
+
+//PARTICLES
+// create walk particle
+if (on_ground && ((xsp != 0) or (ysp !=0)))
+{
+	int_particle_walk++;
+	if (int_particle_walk >= 5)
+	{
+		create_particle(sParticleWalk,-1,1.5,2,"Player",x,y,z,0,0,0,0,0.1,0.5);
+		int_particle_walk = 0;
+	}
+}
+
+// create land particle
+if (on_ground && int_particle_land == 0)
+{
+	repeat(10) create_particle(sParticleWalk,2,1.5,2.5,"Player",x,y,z,-1.5,1.5,-1.5,1.5,0,0);	
+	int_particle_land = 1;
+}
+if (!on_ground) int_particle_land = 0;

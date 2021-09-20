@@ -1,3 +1,4 @@
+/*
 //DRAW DEBUG
 var _w = display_get_gui_width();
 
@@ -27,3 +28,4 @@ for (var i = 0; i < ds_grid_height(col_grid_xy); i++)
 	draw_text(_w - 16,64 + 10*i, string(col_grid_xy[# 0, i]) + " : " + string(col_grid_xy[# 1, i]));
 	draw_set_halign(fa_left);
 }
+*/

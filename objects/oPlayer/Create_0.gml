@@ -10,6 +10,10 @@ xsp = 0;
 ysp = 0;
 zsp = 0;
 
+xsp_push = 0;
+ysp_push = 0;
+zsp_push = 0;
+
 
 //X/Y MOVEMENT
 h_move = 0;
@@ -25,7 +29,7 @@ jumps_max		= 1;
 jumps			= jumps_max;
 jump_speed		= 4;
 on_ground_timer = 0;
-coyote_time		= 8;
+coyote_time		= 5;
 crouch = false;
 
 
@@ -39,11 +43,13 @@ z_height   = 12;
 
 
 //COLLISION
+on_ground_id = -4;
+z_meeting = false;
 xy_meeting = -4;
-col_grid_xy   = ds_grid_create(2,1);
-col_amount_xy = 0;
-col_grid_z    = ds_grid_create(2,1);
-col_amount_z  = 0;
+//col_grid_xy   = ds_grid_create(2,1);
+//col_amount_xy = 0;
+collision_grid    = ds_grid_create(2,1);
+collision_amount  = 0;
 
 
 //PARTICLES
