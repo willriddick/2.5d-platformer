@@ -1,4 +1,4 @@
-function create_particle(
+function CreateParticle(
 	_sprite_index,_image_index,_image_speed_min,_image_speed_max,_layer,
 	_x,_y,_z,
 	_xsp_min,_xsp_max,
@@ -23,3 +23,4 @@ function create_particle(
 		zsp = irandom_range(_zsp_min,_zsp_max);
 	}
 }
+

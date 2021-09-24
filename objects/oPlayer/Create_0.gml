@@ -2,6 +2,7 @@ event_inherited();
 
 //SHADOW AND DEPTH
 my_shadow = instance_create_layer(x,y,"Player",oShadow);
+//my_shadow = -4;
 draw_depth = 0;
 
 
@@ -29,13 +30,16 @@ jumps_max		= 1;
 jumps			= jumps_max;
 jump_speed		= 4;
 on_ground_timer = 0;
-coyote_time		= 5;
+coyote_time		= 7;
+
+jump_buffer_timer = 0;
+jump_buffer		  = 10;
 crouch = false;
 
 
 //Z AXIS AND GRAVITY
-grv		= 0.2;
-grv_max	= 7;
+grv_max	   = 7;
+grv		   = 0.2;
 z		   = 0;
 z_floor    = 0;
 on_ground  = false;
@@ -44,6 +48,7 @@ z_height   = 12;
 
 //COLLISION
 on_ground_meeting = -4;
+//west_meeting = -4;
 xy_meeting = -4;
 z_meeting = false;
 

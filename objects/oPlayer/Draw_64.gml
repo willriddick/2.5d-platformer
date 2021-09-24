@@ -15,17 +15,9 @@ _debug += "jumps: " + string(jumps) + "\n";
 _debug += "xy_meeting: " + string(xy_meeting) + "\n";
 draw_text(16,16,_debug);
 
-for (var i = 0; i < ds_grid_height(col_grid_z); i++)
+for (var i = 0; i < ds_grid_height(collision_grid); i++)
 {
 	draw_set_halign(fa_right);
-	draw_text(_w - 16,16 + 10*i, string(col_grid_z[# 0, i]) + " : " + string(col_grid_z[# 1, i]));
+	draw_text(_w - 16,64 + 10*i, string(collision_grid[# 0, i]) + " : " + string(collision_grid[# 1, i]));
 	draw_set_halign(fa_left);
 }
-
-for (var i = 0; i < ds_grid_height(col_grid_xy); i++)
-{
-	draw_set_halign(fa_right);
-	draw_text(_w - 16,64 + 10*i, string(col_grid_xy[# 0, i]) + " : " + string(col_grid_xy[# 1, i]));
-	draw_set_halign(fa_left);
-}
-*/

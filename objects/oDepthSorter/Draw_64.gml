@@ -1,1 +1,0 @@
-with (all) event_perform(ev_gui,0);

@@ -1,18 +1,5 @@
-//DRAW SHAODW
-draw_set_color(c_black);
-draw_set_alpha(0.4);
-draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,false);
-draw_set_color(c_white);
-draw_set_alpha(1);
-
-
-//SET Z TOP
-z_top = z + z_height;
-
-
 //SET DRAW DEPTH
-draw_depth = y + z + z_height/2;
-
+event_inherited();
 
 //DRAW OURSELVES
 draw_sprite_ext(sprite_index, image_index, x, y - z, 
@@ -25,13 +12,16 @@ draw_rectangle(bbox_left,bbox_top - z,bbox_right,bbox_bottom - z,true);
 draw_set_color(c_white);
 
 
-/*
 //DEBUG
 draw_set_halign(fa_center);
 draw_set_valign(fa_center);
 draw_set_font(global.bitmap_font);
-draw_text(x,y - z_top, "t:" + string(z_top) + "\n" +
-					   "z:" + string(z) + "\n" +
-					   "dd:" + string(draw_depth));
+
+var _debug_text = "";
+_debug_text += "z:" + string(z) + "\n";
+_debug_text += "t:" + string(z_top) + "\n"; 
+_debug_text += "dd:" + string(draw_depth) + "\n";
+
+draw_text(x,y - z_top,_debug_text);							   
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
