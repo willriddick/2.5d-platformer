@@ -8,11 +8,11 @@ draw_depth = 0;
 
 //STATES
 states = {
-	idle:		 new State("idle",sPlayer,false),
-	walk:		 new State("walk",sPlayer,false),
-	crouch:		 new State("crouch",sPlayerCrouch,false),
-	air:		 new State("air",sPlayer,false),
-	jetpack:     new State("jetpack",sPlayer,false)
+	idle:		 new State("idle",StateNormal,sPlayer,false),
+	walk:		 new State("walk",StateNormal,sPlayer,false),
+	air:		 new State("air",StateNormal,sPlayer,false),
+	crouch:		 new State("crouch",StateCrouch,sPlayerCrouch,false),
+	jetpack:     new State("jetpack",StateJetpack,sPlayer,false)
 }
 state = states.idle;
 state_timer = 0;
@@ -50,7 +50,7 @@ on_ground_timer = 0;
 coyote_time		= 7;
 
 jump_buffer_timer = 0;
-jump_buffer		  = 10;
+jump_buffer		  = 15;
 
 
 //CROUCH
@@ -61,7 +61,7 @@ v_move_speed_crouch = 0.75;
 
 //Z AXIS AND GRAVITY
 grv_max	   = 7;
-grv		   = 0.2;
+grv		   = 0.25;
 z		   = 0;
 z_floor    = 0;
 on_ground  = false;

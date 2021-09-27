@@ -1,5 +1,5 @@
 //COLLISION FUNCTION
-function place_meeting_3d(_x, _y, _z, _height, _obj)
+function place_meeting_3d2(_x, _y, _z, _height, _obj)
 {
 	// check for multiple collisions with a ds_list
 	var _col_list = ds_list_create();
@@ -32,6 +32,10 @@ function place_meeting_3d(_x, _y, _z, _height, _obj)
 		z_meeting = rectangle_in_rectangle(0, xy_meeting.z + xy_meeting.zsp, 
 						 1, xy_meeting.z + xy_meeting.z_height + xy_meeting.zsp,	
 						 0, _z + _z_offset + zsp, 1, _z + _height + _z_offset + zsp);	
+	} 
+	else 
+	{
+		z_meeting = false;
 	}
 	
 	
@@ -41,7 +45,7 @@ function place_meeting_3d(_x, _y, _z, _height, _obj)
 
 
 //FUNCTION USED TO STORE THE COLLISION CODE AND CHANGE THE COORDINATE VALUES 
-function Collision(){
+function Collision2(){
 	// push variables
 	if (on_ground_meeting)
 	{
@@ -85,8 +89,8 @@ function Collision(){
 	{
 		while (!place_meeting_3d(x + sign(xsp_final), y, z, z_height, oWallParent)) x += sign(xsp_final);
 		xsp_final = 0;
-		xsp = 0;
 		xsp_push = 0;
+		xsp = 0;
 	}		
 	
 	//Y COLLISION
@@ -96,8 +100,8 @@ function Collision(){
 	{
 		while (!place_meeting_3d(x, y + sign(ysp_final), z, z_height, oWallParent)) y += sign(ysp_final);
 		ysp_final = 0;
-		ysp = 0;
 		ysp_push = 0;
+		ysp = 0;
 	}	
 
 	//Z COLLISION
@@ -105,19 +109,19 @@ function Collision(){
 	zsp_final = zsp + zsp_push;
 	if (place_meeting_3d(x, y, z + zsp_final, z_height, oWallParent))
 	{
-		while (!place_meeting_3d(x, y, z + sign(zsp_final), z_height, oWallParent)) z += sign(zsp_final);
+		//while (!place_meeting_3d(x, y, z + sign(zsp_final), z_height, oWallParent)) z += sign(zsp_final);
 		zsp_final = 0;
-		zsp = 0;
 		zsp_push = 0;
+		zsp = 0;
 	}	
 	
 	//CHANGE COORDINATE VALUES
 	x += xsp_final;
 	y += ysp_final;
 	z += zsp_final;
-}
+} 
 
-function AntiStick(){
+function AntiStick2(){
 	if (place_meeting_3d(x, y, z, z_height, oWallParent))
 	{
 		for (var i = 0; i < 64; i++)
@@ -134,7 +138,7 @@ function AntiStick(){
 
 
 //FUNCTION USED TO PLACE PLAYER IN THE Z_AXIS
-function CollisionGround(){
+function CollisionGround2(){
 	// get on_ground_id
 	if (xy_meeting) && (on_ground)
 	{
@@ -177,13 +181,13 @@ function CollisionGround(){
 	}
 	else on_ground = false;
 	
-	/*
+	
 	if (on_ground) 
 	{
 		z = z_floor;
 		on_ground_timer = coyote_time;
 	}
-	*/
+	
 	
 	// gravity
 	if (!on_ground)
@@ -193,7 +197,7 @@ function CollisionGround(){
 		else zsp = -grv_max;
 	} 
 			
-	/*
+	
 	// snap to ground
 	if ((z + zsp_final) <= z_floor)
 	{
@@ -201,6 +205,4 @@ function CollisionGround(){
 		zsp_final = 0;
 		zsp = 0;
 	}
-	*/
 }
-
