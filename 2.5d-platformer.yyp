@@ -27,6 +27,7 @@
     {"id":{"name":"oDepthSorter","path":"objects/oDepthSorter/oDepthSorter.yy",},"order":0,},
     {"id":{"name":"oBox8","path":"objects/oBox8/oBox8.yy",},"order":3,},
     {"id":{"name":"sEnemy","path":"sprites/sEnemy/sEnemy.yy",},"order":7,},
+    {"id":{"name":"scrPlayerStates","path":"scripts/scrPlayerStates/scrPlayerStates.yy",},"order":3,},
     {"id":{"name":"oBox16_2","path":"objects/oBox16_2/oBox16_2.yy",},"order":8,},
     {"id":{"name":"sParticleWalk","path":"sprites/sParticleWalk/sParticleWalk.yy",},"order":8,},
     {"id":{"name":"sWallDiagonal","path":"sprites/sWallDiagonal/sWallDiagonal.yy",},"order":11,},

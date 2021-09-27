@@ -6,6 +6,17 @@ my_shadow = instance_create_layer(x,y,"Player",oShadow);
 draw_depth = 0;
 
 
+//STATES
+states = {
+	idle:		 new State("idle",sPlayer,false),
+	walk:		 new State("walk",sPlayer,false),
+	crouch:		 new State("crouch",sPlayerCrouch,false),
+	air:		 new State("air",sPlayer,false),
+	jetpack:     new State("jetpack",sPlayer,false)
+}
+state = states.idle;
+state_timer = 0;
+
 //COORDINATE SPEEDS
 xsp = 0;
 ysp = 0;
@@ -15,14 +26,20 @@ xsp_push = 0;
 ysp_push = 0;
 zsp_push = 0;
 
+xsp_final = 0;
+ysp_final = 0;
+zsp_final = 0;
 
-//X/Y MOVEMENT
+
+//X AND Y MOVEMENT
 h_move = 0;
 v_move = 0;
-h_move_speed = 2;
-v_move_speed = 1.5;
-move_dir	 = 0;
-move_speed_multiplier = 1;
+move_dir = 0;
+
+h_move_speed_default = 2;
+v_move_speed_default = 1.5;
+h_move_speed = h_move_speed_default;
+v_move_speed = v_move_speed_default;
 
 
 //JUMPING
@@ -34,7 +51,12 @@ coyote_time		= 7;
 
 jump_buffer_timer = 0;
 jump_buffer		  = 10;
+
+
+//CROUCH
 crouch = false;
+h_move_speed_crouch = 1;
+v_move_speed_crouch = 0.75;
 
 
 //Z AXIS AND GRAVITY
@@ -57,5 +79,6 @@ collision_amount  = 0;
 
 
 //PARTICLES
-int_particle_walk = 0;
-int_particle_land = 0;
+int_particle_walk	 = 0;
+int_particle_land	 = 0;
+int_particle_jetpack = 0;

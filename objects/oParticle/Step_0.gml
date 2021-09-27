@@ -11,7 +11,7 @@ z += zsp;
 //KILL PARTICLE
 if (image_index > image_number - 1) 
 {
-	instance_destroy(my_shadow);
+	//instance_destroy(my_shadow);
 	destroy = true;
 }
 
@@ -36,6 +36,7 @@ if (z < z_floor)
 	zsp = 0;
 }
 
+/*
 //SHADOW
 if (z == z_floor) draw_shadow = false;
 
@@ -54,3 +55,4 @@ else with (my_shadow)
 	y = other.y;
 	z = other.z_floor;
 }
+*/

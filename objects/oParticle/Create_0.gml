@@ -1,8 +1,10 @@
 event_inherited();
 
+/*
 //SHADOW
 draw_shadow = true;
 if (draw_shadow) my_shadow = instance_create_layer(x,y,"Player",oShadow);
+*/
 
 destroy = false;
 draw_depth = 0;

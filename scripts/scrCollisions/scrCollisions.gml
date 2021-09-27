@@ -42,6 +42,20 @@ function place_meeting_3d(_x, _y, _z, _height, _obj)
 
 //FUNCTION USED TO STORE THE COLLISION CODE AND CHANGE THE COORDINATE VALUES 
 function Collision(){
+	// push variables
+	if (on_ground_meeting)
+	{
+		xsp_push = on_ground_meeting.xsp;	
+		ysp_push = on_ground_meeting.ysp;	
+		zsp_push = on_ground_meeting.zsp;	
+	}
+	else 
+	{
+		xsp_push = 0;
+		ysp_push = 0;
+		zsp_push = 0;	
+	}
+	
 	/*
 	//X SLOPE COLLISION
 	if (place_meeting_2d(x + xsp, y, z, z_height, oWallDiagonal)) 
@@ -65,39 +79,42 @@ function Collision(){
 		
 	
 	//X COLLISION
-	var _xsp_final = xsp + xsp_push;
-	if (place_meeting_3d(x + _xsp_final, y, z, z_height, oWallParent))
+	//xsp_final = round(xsp + xsp_push);
+	xsp_final = xsp + xsp_push;
+	if (place_meeting_3d(x + xsp_final, y, z, z_height, oWallParent))
 	{
-		while (!place_meeting_3d(x + sign(_xsp_final), y, z, z_height,  oWallParent)) x += sign(_xsp_final);
-		_xsp_final = 0;
+		while (!place_meeting_3d(x + sign(xsp_final), y, z, z_height, oWallParent)) x += sign(xsp_final);
+		xsp_final = 0;
 		xsp = 0;
 		xsp_push = 0;
 	}		
 	
 	//Y COLLISION
-	var _ysp_final = ysp + ysp_push;
-	if (place_meeting_3d(x, y + _ysp_final, z, z_height, oWallParent))
+	//ysp_final = round(ysp + ysp_push);
+	ysp_final = ysp + ysp_push;
+	if (place_meeting_3d(x, y + ysp_final, z, z_height, oWallParent))
 	{
-		while (!place_meeting_3d(x, y + sign(_ysp_final), z, z_height,  oWallParent)) y += sign(_ysp_final);
-		_ysp_final = 0;
+		while (!place_meeting_3d(x, y + sign(ysp_final), z, z_height, oWallParent)) y += sign(ysp_final);
+		ysp_final = 0;
 		ysp = 0;
 		ysp_push = 0;
 	}	
 
 	//Z COLLISION
-	var _zsp_final = zsp + zsp_push;
-	if (place_meeting_3d(x, y, z + _zsp_final, z_height, oWallParent))
+	//zsp_final = round(zsp + zsp_push);
+	zsp_final = zsp + zsp_push;
+	if (place_meeting_3d(x, y, z + zsp_final, z_height, oWallParent))
 	{
-		while (!place_meeting_3d(x, y, z + sign(_zsp_final), z_height,  oWallParent)) z += sign(_zsp_final);
-		_zsp_final = 0;
+		while (!place_meeting_3d(x, y, z + sign(zsp_final), z_height, oWallParent)) z += sign(zsp_final);
+		zsp_final = 0;
 		zsp = 0;
 		zsp_push = 0;
 	}	
 	
 	//CHANGE COORDINATE VALUES
-	x += _xsp_final;
-	y += _ysp_final;
-	z += _zsp_final;
+	x += xsp_final;
+	y += ysp_final;
+	z += zsp_final;
 }
 
 function AntiStick(){
@@ -118,66 +135,72 @@ function AntiStick(){
 
 //FUNCTION USED TO PLACE PLAYER IN THE Z_AXIS
 function CollisionGround(){
-	// snap to ground
-	if (z + zsp < z_floor) 
-	{
-		z = z_floor;
-	}
-	
-	// on ground
-	if (abs(z - z_floor) <= 0.5) on_ground = true;
-	else on_ground = false;
-
-	if (on_ground) 
-	{
-		zsp = 0;
-		z = z_floor;
-		on_ground_timer = coyote_time;
-	}
-	
-
 	// get on_ground_id
 	if (xy_meeting) && (on_ground)
 	{
-		if ((z - xy_meeting.z_top) <= 0.1) && (z + 1 >= xy_meeting.z_top)
+		if ((z - xy_meeting.z_top) <= 0.3) && (z >= xy_meeting.z_top)
 		{
 			on_ground_meeting = xy_meeting; 
-		} else on_ground_meeting = noone;
-	} else on_ground_meeting = noone;
-
+		}
+		else on_ground_meeting = noone;
+	}
+	else on_ground_meeting = noone;
 	
-	// set z_floor
+	
+	// get z_floor value
 	if (on_ground)
 	{
 		if (on_ground_meeting)
 		{
 			z_floor = on_ground_meeting.z_top;	
-		} else z_floor = 0
+		} 
+		else z_floor = 0;
 	}
-	else if (!on_ground) 
+	else
 	{
 		if (xy_meeting)
 		{
 			if (z > xy_meeting.z_top) z_floor = xy_meeting.z_top;	
 			else z_floor = 0;
-		} else z_floor = 0;
+		} 
+		else z_floor = 0;
 	}
 	
+	
+	// on ground
+	if ((z - 1) <= z_floor) 
+	{
+		on_ground = true;
+		z = z_floor;
+		on_ground_timer = coyote_time;
+		
+	}
+	else on_ground = false;
 	
 	/*
-	// push variables
-	if (on_ground_meeting)
+	if (on_ground) 
 	{
-		xsp_push = on_ground_meeting.xsp;	
-		ysp_push = on_ground_meeting.ysp;	
-		zsp_push = on_ground_meeting.zsp;	
-	}
-	else 
-	{
-		xsp_push = 0;
-		ysp_push = 0;
-		zsp_push = 0;	
+		z = z_floor;
+		on_ground_timer = coyote_time;
 	}
 	*/
 	
+	// gravity
+	if (!on_ground)
+	{		
+		// cap the gravity to grv max
+		if (zsp > -grv_max) zsp -= grv;	
+		else zsp = -grv_max;
+	} 
+			
+	/*
+	// snap to ground
+	if ((z + zsp_final) <= z_floor)
+	{
+		z = z_floor;
+		zsp_final = 0;
+		zsp = 0;
+	}
+	*/
 }
+

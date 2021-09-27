@@ -20,6 +20,7 @@ draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 draw_set_font(global.bitmap_font);
 var _debug = "";
+_debug += "state: " + string(state.name) + "\n";
 _debug += "draw_depth: " + string(draw_depth) + "\n";
 _debug += "z: " + string(z) + "\n";
 _debug += "zsp: " + string(zsp) + "\n"; 
