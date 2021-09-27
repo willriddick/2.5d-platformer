@@ -1,13 +1,16 @@
 {
   "spriteId": {
-    "name": "sEnemy",
-    "path": "sprites/sEnemy/sEnemy.yy",
+    "name": "sBox16_Slope",
+    "path": "sprites/sBox16_Slope/sBox16_Slope.yy",
   },
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
   "persistent": false,
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "oWallParent",
+    "path": "objects/oWallParent/oWallParent.yy",
+  },
   "physicsObject": false,
   "physicsSensor": false,
   "physicsShape": 1,
@@ -20,7 +23,9 @@
   "physicsStartAwake": true,
   "physicsKinematic": false,
   "physicsShapePoints": [],
-  "eventList": [],
+  "eventList": [
+    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+  ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
@@ -28,7 +33,7 @@
     "path": "folders/Objects.yy",
   },
   "resourceVersion": "1.0",
-  "name": "oEnemy",
+  "name": "oBox16_Slope",
   "tags": [],
   "resourceType": "GMObject",
 }
