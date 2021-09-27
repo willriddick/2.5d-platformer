@@ -1,19 +1,9 @@
 //STATE MACHINE
-switch (state)
-{
-	case states.idle:		StateNormal();	break;
-	case states.walk:		StateNormal();	break;
-	case states.air:		StateNormal();	break;
-	case states.crouch:     StateCrouch();	break;
-	case states.jetpack:	StateJetpack();	break;
-}
+sprite_index = state.sprite;
+script_execute(state.script);
+
 if (state_timer < 0) state_timer--;
 else state_timer = 0;
-
-
-//SPRITE
-sprite_index = state.sprite;
-
 
 //MOVEMENT
 h_move = oInput.right - oInput.left;
@@ -33,6 +23,22 @@ else
 }
 
 
+//GRAVITY
+if (!on_ground)
+{		
+	// cap the gravity to grv max
+	if (zsp > -grv_max) zsp -= grv;	
+	else zsp = -grv_max;
+}
+
+// snap to ground
+if (z + zsp < z_floor) 
+{
+	z = z_floor;
+	zsp = 0;
+}
+
+
 
 //NUDGE
 if (oInput.pad_up) y--;
@@ -44,7 +50,7 @@ if (oInput.pad_right) x++;
 //COLLISIONS
 Collision();
 CollisionGround();
-AntiStick();
+//AntiStick();
 
 
 //SHADOW

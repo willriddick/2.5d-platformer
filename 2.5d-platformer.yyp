@@ -36,6 +36,7 @@
     {"id":{"name":"sBox16_2","path":"sprites/sBox16_2/sBox16_2.yy",},"order":9,},
     {"id":{"name":"sBox16","path":"sprites/sBox16/sBox16.yy",},"order":3,},
     {"id":{"name":"sBox8","path":"sprites/sBox8/sBox8.yy",},"order":4,},
+    {"id":{"name":"scrNewCollisions","path":"scripts/scrNewCollisions/scrNewCollisions.yy",},"order":4,},
     {"id":{"name":"scrScripts","path":"scripts/scrScripts/scrScripts.yy",},"order":1,},
     {"id":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},"order":0,},
     {"id":{"name":"oBox16_4","path":"objects/oBox16_4/oBox16_4.yy",},"order":15,},

@@ -31,8 +31,12 @@ function StateNormal(){
 	if (jump_buffer_timer > 0) jump_buffer_timer--;
 	else jump_buffer_timer = 0;
 
-	if (on_ground) jumps = jumps_max;
-	
+	if (on_ground)
+	{
+		jumps = jumps_max;
+		on_ground_timer = coyote_time;	
+	}
+
 
 	//SET JUMP BUFFER
 	if ((oInput.jump) && (jumps > 0) && (on_ground_timer > 0)) 

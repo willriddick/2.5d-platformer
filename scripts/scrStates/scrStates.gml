@@ -1,5 +1,6 @@
-function State(_name,_sprite, _end_on_animation) constructor {
-	name = _name;
+function State(_name, _script, _sprite, _end_on_animation) constructor {
+	name   = _name;
+	script = _script;
 	sprite = _sprite;
 	
 	end_on_animation = _end_on_animation;
