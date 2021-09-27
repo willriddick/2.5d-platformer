@@ -1,5 +1,5 @@
 //COLLISION FUNCTION
-function place_meeting_3d2(_x, _y, _z, _height, _obj)
+function place_meeting_3d(_x, _y, _z, _height, _obj)
 {
 	// check for multiple collisions with a ds_list
 	var _col_list = ds_list_create();
@@ -29,13 +29,8 @@ function place_meeting_3d2(_x, _y, _z, _height, _obj)
 	var _z_offset = 0.01; // required to prevent the player from being stuck in objects
 	if (xy_meeting)
 	{
-		z_meeting = rectangle_in_rectangle(0, xy_meeting.z + xy_meeting.zsp, 
-						 1, xy_meeting.z + xy_meeting.z_height + xy_meeting.zsp,	
-						 0, _z + _z_offset + zsp, 1, _z + _height + _z_offset + zsp);	
-	} 
-	else 
-	{
-		z_meeting = false;
+		z_meeting = rectangle_in_rectangle(0, xy_meeting.z, 1, xy_meeting.z + xy_meeting.z_height,	
+						 0, _z + _z_offset, 1, _z + _height + _z_offset);	
 	}
 	
 	
@@ -45,8 +40,8 @@ function place_meeting_3d2(_x, _y, _z, _height, _obj)
 
 
 //FUNCTION USED TO STORE THE COLLISION CODE AND CHANGE THE COORDINATE VALUES 
-function Collision2(){
-	// push variables
+function Collision(){
+	//PUSH VARIABLES
 	if (on_ground_meeting)
 	{
 		xsp_push = on_ground_meeting.xsp;	
@@ -57,7 +52,7 @@ function Collision2(){
 	{
 		xsp_push = 0;
 		ysp_push = 0;
-		zsp_push = 0;	
+		zsp_push = 0;
 	}
 	
 	/*
@@ -83,45 +78,45 @@ function Collision2(){
 		
 	
 	//X COLLISION
-	//xsp_final = round(xsp + xsp_push);
 	xsp_final = xsp + xsp_push;
 	if (place_meeting_3d(x + xsp_final, y, z, z_height, oWallParent))
 	{
-		while (!place_meeting_3d(x + sign(xsp_final), y, z, z_height, oWallParent)) x += sign(xsp_final);
+		while (!place_meeting_3d(x + sign(xsp_final), y, z, z_height,  oWallParent)) x += sign(xsp_final);
 		xsp_final = 0;
-		xsp_push = 0;
 		xsp = 0;
+		xsp_push = 0; 
+		
 	}		
 	
 	//Y COLLISION
-	//ysp_final = round(ysp + ysp_push);
 	ysp_final = ysp + ysp_push;
 	if (place_meeting_3d(x, y + ysp_final, z, z_height, oWallParent))
 	{
-		while (!place_meeting_3d(x, y + sign(ysp_final), z, z_height, oWallParent)) y += sign(ysp_final);
+		while (!place_meeting_3d(x, y + sign(ysp_final), z, z_height,  oWallParent)) y += sign(ysp_final);
 		ysp_final = 0;
-		ysp_push = 0;
 		ysp = 0;
+		ysp_push = 0; 
+		
 	}	
 
 	//Z COLLISION
-	//zsp_final = round(zsp + zsp_push);
 	zsp_final = zsp + zsp_push;
 	if (place_meeting_3d(x, y, z + zsp_final, z_height, oWallParent))
 	{
-		//while (!place_meeting_3d(x, y, z + sign(zsp_final), z_height, oWallParent)) z += sign(zsp_final);
+		while (!place_meeting_3d(x, y, z + sign(zsp_final), z_height,  oWallParent)) z += sign(zsp_final);
 		zsp_final = 0;
-		zsp_push = 0;
 		zsp = 0;
+		zsp_push = 0; 
+		
 	}	
 	
 	//CHANGE COORDINATE VALUES
 	x += xsp_final;
 	y += ysp_final;
 	z += zsp_final;
-} 
+}
 
-function AntiStick2(){
+function AntiStick(){
 	if (place_meeting_3d(x, y, z, z_height, oWallParent))
 	{
 		for (var i = 0; i < 64; i++)
@@ -138,71 +133,45 @@ function AntiStick2(){
 
 
 //FUNCTION USED TO PLACE PLAYER IN THE Z_AXIS
-function CollisionGround2(){
-	// get on_ground_id
-	if (xy_meeting) && (on_ground)
+function CollisionGround(){
+	//SNAP TO GROUND
+	if (z + zsp_final < z_floor) 
 	{
-		if ((z - xy_meeting.z_top) <= 0.3) && (z >= xy_meeting.z_top)
-		{
-			on_ground_meeting = xy_meeting; 
-		}
-		else on_ground_meeting = noone;
+		z = z_floor;
+		zsp = 0;
+		zsp_final = 0;
 	}
-	else on_ground_meeting = noone;
 	
 	
-	// get z_floor value
+	//ON GROUND
+	if ((z - z_floor) <= 0.2) on_ground = true;
+	else on_ground = false;
+
+
+	//GET ON GROUND ID
+	if (xy_meeting)
+	{
+		if ((z - xy_meeting.z_top) <= 0.2) &&  (z + 1 > xy_meeting.z_top)
+		{
+			on_ground_meeting = xy_meeting; 	
+		} else on_ground_meeting = noone;
+	} else on_ground_meeting = noone;
+
+
+	//SET Z FLOOR
 	if (on_ground)
 	{
 		if (on_ground_meeting)
 		{
 			z_floor = on_ground_meeting.z_top;	
-		} 
-		else z_floor = 0;
+		} else z_floor = 0
 	}
-	else
+	else 
 	{
 		if (xy_meeting)
 		{
 			if (z > xy_meeting.z_top) z_floor = xy_meeting.z_top;	
 			else z_floor = 0;
-		} 
-		else z_floor = 0;
-	}
-	
-	
-	// on ground
-	if ((z - 1) <= z_floor) 
-	{
-		on_ground = true;
-		z = z_floor;
-		on_ground_timer = coyote_time;
-		
-	}
-	else on_ground = false;
-	
-	
-	if (on_ground) 
-	{
-		z = z_floor;
-		on_ground_timer = coyote_time;
-	}
-	
-	
-	// gravity
-	if (!on_ground)
-	{		
-		// cap the gravity to grv max
-		if (zsp > -grv_max) zsp -= grv;	
-		else zsp = -grv_max;
-	} 
-			
-	
-	// snap to ground
-	if ((z + zsp_final) <= z_floor)
-	{
-		z = z_floor;
-		zsp_final = 0;
-		zsp = 0;
+		} else z_floor = 0;
 	}
 }
