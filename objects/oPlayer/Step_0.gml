@@ -31,12 +31,6 @@ if (!on_ground)
 	else zsp = -grv_max;
 }
 
-// snap to ground
-if (z + zsp < z_floor) 
-{
-	z = z_floor;
-	zsp = 0;
-}
 
 
 

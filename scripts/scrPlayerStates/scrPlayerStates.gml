@@ -24,19 +24,19 @@ function StateNormal(){
 	if (oInput.kick_hold) StateSet(states.jetpack,0);
 
 
-	//JUMPING
+	//JUMP TIMERS
 	if (on_ground_timer > 0) on_ground_timer--;
 	else on_ground_timer = 0;
 
 	if (jump_buffer_timer > 0) jump_buffer_timer--;
 	else jump_buffer_timer = 0;
-
+	
+	//SET JUMPS AND COYOTE TIME
 	if (on_ground)
 	{
 		jumps = jumps_max;
 		on_ground_timer = coyote_time;	
 	}
-
 
 	//SET JUMP BUFFER
 	if ((oInput.jump) && (jumps > 0) && (on_ground_timer > 0)) 
@@ -58,6 +58,7 @@ function StateNormal(){
 	if ((zsp > 0) && (!oInput.jump_hold) && (!on_ground)) zsp *= 0.75;
 }
 
+/////////////////////////////////////////////////////////////////////////////////////
 
 function StateCrouch(){
 	//CROUCHING
@@ -86,7 +87,43 @@ function StateCrouch(){
 			z_height = 6;	
 		}
 	}
+	
+	
+	//JUMP TIMERS
+	if (on_ground_timer > 0) on_ground_timer--;
+	else on_ground_timer = 0;
+
+	if (jump_buffer_timer > 0) jump_buffer_timer--;
+	else jump_buffer_timer = 0;
+	
+	//SET JUMPS AND COYOTE TIME
+	if (on_ground)
+	{
+		jumps = jumps_max;
+		on_ground_timer = coyote_time;	
+	}
+
+	//SET JUMP BUFFER
+	if ((oInput.jump) && (jumps > 0) && (on_ground_timer > 0)) 
+	{	
+		jump_buffer_timer = jump_buffer;
+	}
+
+
+	//JUMP
+	if (jump_buffer_timer > 0)
+	{
+		zsp = jump_speed;	
+		jumps--;
+		jump_buffer_timer = 0;	
+	}
+
+
+	//VARIABLE JUMP HEIGHT
+	if ((zsp > 0) && (!oInput.jump_hold) && (!on_ground)) zsp *= 0.75;
 }
+
+/////////////////////////////////////////////////////////////////////////////////////
 
 function StateJetpack(){
 	//NOT JETPACK
