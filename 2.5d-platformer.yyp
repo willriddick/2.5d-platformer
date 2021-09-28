@@ -9,6 +9,7 @@
     {"id":{"name":"scrStates","path":"scripts/scrStates/scrStates.yy",},"order":2,},
     {"id":{"name":"rmGame","path":"rooms/rmGame/rmGame.yy",},"order":1,},
     {"id":{"name":"oParticle","path":"objects/oParticle/oParticle.yy",},"order":1,},
+    {"id":{"name":"oGui","path":"objects/oGui/oGui.yy",},"order":4,},
     {"id":{"name":"sBitmapFont","path":"sprites/sBitmapFont/sBitmapFont.yy",},"order":1,},
     {"id":{"name":"sBox16_4","path":"sprites/sBox16_4/sBox16_4.yy",},"order":15,},
     {"id":{"name":"oBox4","path":"objects/oBox4/oBox4.yy",},"order":5,},

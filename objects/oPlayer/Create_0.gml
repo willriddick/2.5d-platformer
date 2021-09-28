@@ -70,9 +70,12 @@ z_height   = 12;
 
 //COLLISION
 on_ground_meeting = -4;
-//west_meeting = -4;
 xy_meeting = -4;
 z_meeting = false;
+
+north_meeting = -4;
+south_meeting = -4;
+
 
 collision_grid    = ds_grid_create(2,1);
 collision_amount  = 0;

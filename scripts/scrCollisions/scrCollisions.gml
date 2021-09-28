@@ -55,26 +55,26 @@ function Collision(){
 		zsp_push = 0;
 	}
 	
-	/*
+	
 	//X SLOPE COLLISION
-	if (place_meeting_2d(x + xsp, y, z, z_height, oWallDiagonal)) 
+	if (place_meeting_3d(x + xsp, y, z, z_height, oWallDiagonal)) 
 	{
-		if (!place_meeting_2d(x + sign(xsp), y + 1, z, z_height, oWallDiagonal)) y++;
+		if (!place_meeting_3d(x + sign(xsp), y + 1, z, z_height, oWallDiagonal)) y++;
 	}
-	if (place_meeting_2d(x + xsp, y, z, z_height, oWallDiagonal)) 
+	if (place_meeting_3d(x + xsp, y, z, z_height, oWallDiagonal)) 
 	{
-		if (!place_meeting_2d(x + sign(xsp), y - 1, z, z_height, oWallDiagonal)) y--;
+		if (!place_meeting_3d(x + sign(xsp), y - 1, z, z_height, oWallDiagonal)) y--;
 	}
 	//Y SLOPE COLLISION
-	if (place_meeting_2d(x, y + ysp, z, z_height, oWallDiagonal)) 
+	if (place_meeting_3d(x, y + ysp, z, z_height, oWallDiagonal)) 
 	{
-		if (!place_meeting_2d(x + 1, y + sign(ysp), z, z_height, oWallDiagonal)) x++;
+		if (!place_meeting_3d(x + 1, y + sign(ysp), z, z_height, oWallDiagonal)) x++;
 	}
-	if (place_meeting_2d(x, y + ysp, z, z_height, oWallDiagonal)) 
+	if (place_meeting_3d(x, y + ysp, z, z_height, oWallDiagonal)) 
 	{
-		if (!place_meeting_2d(x - 1, y + sign(ysp), z, z_height, oWallDiagonal)) x--;
+		if (!place_meeting_3d(x - 1, y + sign(ysp), z, z_height, oWallDiagonal)) x--;
 	}
-	*/
+	
 		
 	
 	//X COLLISION

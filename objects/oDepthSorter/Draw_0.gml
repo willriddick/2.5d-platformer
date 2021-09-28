@@ -18,5 +18,5 @@ ds_grid_sort(_dgrid,1,true);
 for (var i = 0; i < _inst_num; i++)
 {
 	var _inst = _dgrid[# 0, i];
-	with (_inst) event_perform(ev_draw,0);
+	//with (_inst) event_perform(ev_draw,0);
 }

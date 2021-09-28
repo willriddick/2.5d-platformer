@@ -1,4 +1,5 @@
-visible = false;
+visible = true;
+//visible = false;
 draw_depth = 0;
 
 z = 0;

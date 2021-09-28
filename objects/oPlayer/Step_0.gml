@@ -5,6 +5,7 @@ script_execute(state.script);
 if (state_timer < 0) state_timer--;
 else state_timer = 0;
 
+
 //MOVEMENT
 h_move = oInput.right - oInput.left;
 v_move = oInput.down - oInput.up;
@@ -32,8 +33,6 @@ if (!on_ground)
 }
 
 
-
-
 //NUDGE
 if (oInput.pad_up) y--;
 if (oInput.pad_down) y++;
@@ -44,7 +43,7 @@ if (oInput.pad_right) x++;
 //COLLISIONS
 Collision();
 CollisionGround();
-//AntiStick();
+AntiStick();
 
 
 //SHADOW
